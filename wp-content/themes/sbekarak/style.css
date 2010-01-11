@@ -1,0 +1,61 @@
+/*
+Theme Name: Sbek Arak
+Theme URI: http://sbekarak.fr/
+Description: Online shopping theme for <a href="http://sbekarak.fr/">sbekarak.fr</a>
+Version: 1.6
+Tags: ecommerce, bags
+*/
+
+.entete1{
+	margin-top:60px;
+	width:700px;
+	height:17px;
+}
+
+.entete2{
+	width:700px;
+	height:17px;
+	margin-bottom:3px;
+}
+
+.entete{
+	width:699px;
+	height:90px;
+	font-size:36px;
+	font-family: "Agency FB";
+	color:#FFFFFF;
+	background-color: #5E8828;
+	padding-top:90px;
+}
+
+.footer1{
+	margin-top:0px;
+	width:700px;
+	height:17px;
+}
+
+.footer2{
+	width:700px;
+	height:17px;
+}
+
+.footer{
+	width:699px;
+	height:150px;
+	background-color:#414A4A;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	padding-top:40px;
+}
+
+.footer a{
+	color:#FFFFFF;
+	font-family:"Agency FB";
+	font-size:18px;
+
+}
+
+.footer a:hover{
+	color:#FFCCFF;
+	font-family:"Agency FB";
+	font-size:30px;
+}
