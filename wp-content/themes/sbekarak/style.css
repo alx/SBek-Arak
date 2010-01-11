@@ -6,8 +6,16 @@ Version: 1.6
 Tags: ecommerce, bags
 */
 
-#page{
+body {
+	margin: 0 0 20px 0;
+	padding: 0;
 	text-align:center;
+}
+
+#page {
+	margin: 20px auto;
+	padding: 0;
+	text-align:left;
 }
 
 .entete1{
