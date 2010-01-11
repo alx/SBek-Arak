@@ -10,7 +10,7 @@
 <div class="footer a"> 
 <table align="center" cellpadding="5"> 
 <tr> 
-<td>En construction...</td>
+<td style="color:#FFF;">En construction...</td>
 </tr> 
 </table> 
 </div> 
