@@ -1,5 +1,5 @@
 <?php
-
+ini_set("memory_limit","-1");
 /*
  * Copyright (C) 2007 Google Inc.
  * 
