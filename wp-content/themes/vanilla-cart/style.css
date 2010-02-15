@@ -1096,3 +1096,27 @@ input.wpsc_buy_button:hover { background:#666; }
 .product_grid_item .product_text .pricedisplay { color:#333; }
 .product_grid_item .grid_more_info { margin:0; padding:0; }
 .product_grid_item .grid_more_info select{ font-size:10px; color:#666;}
+
+/************************************************
+* ElementStack
+************************************************/
+
+#wrapper {
+    position: relative;
+    height: 320px;
+    width: 280px;
+    margin: 15px auto;
+}
+
+img {
+    position: relative;
+    float: left;
+    padding: 0;
+    margin: 5px;
+    -webkit-box-shadow: 0 0 5px #000;
+    -moz-box-shadow: 0 0 5px #000;
+    border: solid 2px #FFFAF2;
+    border-bottom: solid 15px #FFFAF2;
+    -webkit-transition: -webkit-transform 0.20s ease-in-out;
+    -moz-transition: -moz-transform 0.20s ease-in-out;
+}
