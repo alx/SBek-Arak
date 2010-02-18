@@ -60,19 +60,20 @@ a:focus, a:hover, a:active {
 #header {
 	width: 780px;
 	height:120px;
-	margin: 0px auto 0px;
+	margin: 40px auto 0px;
 	padding: 0px;
 	overflow: hidden;
+	text-align:center;
 	}
 
 #header h1 {
 	background:#5E8828;
-	color: #eeeeee;
+	color: #ffffff;
 	font-size: 30px;
 	font-family: Arial, Times New Roman, Trebuchet MS;
 	font-weight: normal;
 	margin: 0px auto;
-	padding: 0px;
+	padding: 20px;
 	text-decoration: none;
 	
 	-moz-border-radius: 10px;
