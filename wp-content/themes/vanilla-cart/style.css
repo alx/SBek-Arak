@@ -124,7 +124,6 @@ a:focus, a:hover, a:active {
 	
 #nav li a, #nav li a:visited {
 	color: #fff;
-	display: block;
 	font-family: Verdana, Arial, Tahoma;
 	font-size: 12px;
 	font-weight: normal;
