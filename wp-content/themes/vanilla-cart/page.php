@@ -8,7 +8,6 @@
     
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
             
-            <h1><?php the_title(); ?></h1>
             <?php the_content(__('Read more'));?><div style="clear:both;"></div><?php edit_post_link('(Edit)', '', ''); ?>
             
             <?php endwhile; else: ?>
@@ -18,8 +17,6 @@
         </div>
 		
 	</div>
-			
-<?php include(TEMPLATEPATH."/sidebar.php");?>
 
 </div>
 
