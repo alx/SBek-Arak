@@ -60,7 +60,7 @@ a:focus, a:hover, a:active {
 #header {
 	width: 780px;
 	height:120px;
-	margin: 40px auto 0px;
+	margin: 20px auto 0px;
 	padding: 0px;
 	overflow: hidden;
 	text-align:center;
@@ -72,7 +72,7 @@ a:focus, a:hover, a:active {
 	font-size: 30px;
 	font-family: Arial, Times New Roman, Trebuchet MS;
 	font-weight: normal;
-	margin: 0px auto;
+	margin: 5px auto;
 	padding: 20px;
 	text-decoration: none;
 	
