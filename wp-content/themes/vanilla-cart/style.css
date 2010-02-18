@@ -97,8 +97,8 @@ a:focus, a:hover, a:active {
     float:left;
 	height:90px;
 	width:100%;
-	margin: 0px;
-	padding: 0px;
+	margin: 0px auto;
+	padding: 20px;
 	overflow: hidden;
 	}
 
@@ -723,11 +723,11 @@ img.alignleft {
 	
 #footer {
 	width: 780px;
-	background:#5E8828;
-	color: #eeeeee;
+	background:#414A4A;
+	color: #ffffff;
 	margin: 0px auto;
 	padding: 0px 0px 15px 0px;
-	text-align: right;
+	text-align: center;
 	
 	-moz-border-radius: 10px;
 	-khtml-border-radius: 10px;
