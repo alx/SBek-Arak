@@ -110,9 +110,15 @@ a:focus, a:hover, a:active {
 	}
 	
 .headerright {
+	background:#414A4A;
+	color:#fff;
     float:right;
 	margin: 0px;
 	padding: 0px;
+	text-align:center;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
 	}
 
 
@@ -126,16 +132,10 @@ a:focus, a:hover, a:active {
 	}
 	
 #nav ul {
-	background:#414A4A;
-	color:#fff;
 	float: left;
 	list-style: none;
 	margin: 0px auto;
 	padding: 0px;
-	text-align:center;
-	-moz-border-radius: 5px;
-	-khtml-border-radius: 5px;
-	-webkit-border-radius: 5px;
 	}
 	
 #nav li {
