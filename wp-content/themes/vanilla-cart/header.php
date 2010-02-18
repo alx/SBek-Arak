@@ -49,9 +49,9 @@ foreach ($options as $value) {
 		
 	<ul id="nav">
 		<?php if (is_home()) { ?>
-            <li class="current_page_item"><a href="<?php echo get_option('home'); ?>">Home</a></li>
+            <li class="current_page_item"><a href="<?php echo get_option('home'); ?>">Acceuil</a></li>
         <?php } else { ?>
-            <li><a href="<?php echo get_option('home'); ?>">Home</a></li>
+            <li><a href="<?php echo get_option('home'); ?>">Acceuil</a></li>
         <?php } ?>    
         <?php wp_list_pages('title_li=&depth=1&sort_column=menu_order'); ?>
 	</ul>
