@@ -146,7 +146,7 @@ a:focus, a:hover, a:active {
 	}
 	
 #nav li a, #nav li a:visited {
-	color: #ccc;
+	color: #fff;
 	display: block;
 	font-family: Verdana, Arial, Tahoma;
 	font-size: 12px;
@@ -157,15 +157,8 @@ a:focus, a:hover, a:active {
 	}
 
 #nav li a:hover {
-	background: #FFFFFF;
-	color: #666;
-	-moz-border-radius-topleft: 5px;
-	-moz-border-radius-topright: 5px;
-	-khtml-border-radius: 5px;
-	-webkit-border-top-left-radius: 5px;
-	-webkit-border-top-right-radius: 5px;
-	-webkit-border-bottom-left-radius: 0px;
-	-webkit-border-bottom-right-radius: 0px;
+	color: #fff;
+	text-decoration: none;
 	}
 	
 #nav li li a, #nav li li a:visited {
