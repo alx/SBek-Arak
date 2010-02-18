@@ -45,13 +45,8 @@ foreach ($options as $value) {
     if (get_settings( $value['id'] ) === FALSE) { $$value['id'] = $value['std']; } else { $$value['id'] = get_settings( $value['id'] ); }
 }
 ?>
-    <div class="headerleft">
-        <h1><a href="<?php echo get_settings('home'); ?>/"><?php if($vc_logo) { ?><img src="<?php echo $vc_logo;?>" /><?php } else { bloginfo('name'); } ?></a></h1>
-        <?php if ($vc_desc == "true") { } else { ?><p><?php bloginfo('description'); ?></p><?php } ?>
-    </div>
+    <h1><a href="<?php echo get_settings('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
 		
-	<div class="headerright">
-    
 	<ul id="nav">
 		<?php if (is_home()) { ?>
             <li class="current_page_item"><a href="<?php echo get_option('home'); ?>">Home</a></li>
@@ -60,8 +55,6 @@ foreach ($options as $value) {
         <?php } ?>    
         <?php wp_list_pages('title_li=&depth=1&sort_column=menu_order'); ?>
 	</ul>
-    
-	</div>
 
 </div>
 
