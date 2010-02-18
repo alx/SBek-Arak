@@ -19,8 +19,8 @@
 */
 
 body {
-	background: #ddd;
-	color: #666666;
+	background: #ffffff;
+	color: #333333;
 	font-size: 12px;
 	font-family: Arial, Tahoma, Verdana;
 	margin: 0px auto 20px;
@@ -28,7 +28,7 @@ body {
 	}
 	
 #wrap {
-	background: #FFFFFF;
+	background: ##ECE9DB;
 	width: 780px;
 	margin: 0px auto 0px;
 	padding: 0px;
@@ -66,13 +66,18 @@ a:focus, a:hover, a:active {
 	}
 
 #header h1 {
-	color: #666666;
+	background:#5E8828;
+	color: #eeeeee;
 	font-size: 30px;
 	font-family: Arial, Times New Roman, Trebuchet MS;
 	font-weight: normal;
-	margin: 30px 0px 0px 0px;
+	margin: 0px auto;
 	padding: 0px;
 	text-decoration: none;
+	
+	-moz-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-webkit-border-radius: 10px;
 	}
 	
 #header h1 a, #header h1 a:visited {
@@ -120,10 +125,16 @@ a:focus, a:hover, a:active {
 	}
 	
 #nav ul {
+	background:#414A4A;
+	color:#fff;
 	float: left;
 	list-style: none;
-	margin: 0px;
+	margin: 0px auto;
 	padding: 0px;
+	text-align:center;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
 	}
 	
 #nav li {
@@ -134,7 +145,6 @@ a:focus, a:hover, a:active {
 	}
 	
 #nav li a, #nav li a:visited {
-	background: #f1f1f1;
 	color: #ccc;
 	display: block;
 	font-family: Verdana, Arial, Tahoma;
@@ -143,13 +153,6 @@ a:focus, a:hover, a:active {
     margin: 0px 5px 0px 0px;
 	padding: 8px 15px 8px 15px;
 	text-decoration: none;
-	-moz-border-radius-topleft: 5px;
-	-moz-border-radius-topright: 5px;
-	-khtml-border-radius: 5px;
-	-webkit-border-top-left-radius: 5px;
-	-webkit-border-top-right-radius: 5px;
-	-webkit-border-bottom-left-radius: 0px;
-	-webkit-border-bottom-right-radius: 0px;
 	}
 
 #nav li a:hover {
@@ -723,22 +726,18 @@ img.alignleft {
 /************************************************
 *	Footer  									*
 ************************************************/
-
 	
 #footer {
 	width: 780px;
-	background: #eee;
-	margin: 0px auto 0px;
+	background:#5E8828;
+	color: #eeeeee;
+	margin: 0px auto;
 	padding: 0px 0px 15px 0px;
 	text-align: right;
-
-	-moz-border-radius-bottomleft: 5px;
-	-moz-border-radius-bottomright: 5px;
-	-khtml-border-radius: 5px;
-	-webkit-border-top-left-radius: 0px;
-	-webkit-border-top-right-radius: 0px;
-	-webkit-border-bottom-left-radius: 5px;
-	-webkit-border-bottom-right-radius: 5px;
+	
+	-moz-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-webkit-border-radius: 10px;
 	}
 	
 .footer {
