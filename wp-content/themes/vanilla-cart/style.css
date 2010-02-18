@@ -100,10 +100,8 @@ a:focus, a:hover, a:active {
 #nav {
 	background:#414A4A;
 	color:#fff;
-	width: 780px;
-	height:60px;
 	margin: 5px auto;
-	padding: 5px;
+	padding: 10px;
 	text-align:center;
 	-moz-border-radius: 5px;
 	-khtml-border-radius: 5px;
@@ -113,7 +111,7 @@ a:focus, a:hover, a:active {
 #nav ul {
 	list-style: none;
 	margin: 0px;
-	padding: 0px;
+	padding: 5px;
 	}
 	
 #nav li {
