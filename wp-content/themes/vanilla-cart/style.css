@@ -112,9 +112,8 @@ a:focus, a:hover, a:active {
 .headerright {
 	background:#414A4A;
 	color:#fff;
-    float:right;
 	margin: 0px;
-	padding: 0px;
+	padding: 10px;
 	text-align:center;
 	-moz-border-radius: 5px;
 	-khtml-border-radius: 5px;

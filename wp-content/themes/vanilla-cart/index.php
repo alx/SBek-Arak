@@ -33,8 +33,6 @@
         </div>
 	
 	</div>
-			
-	<?php include(TEMPLATEPATH."/sidebar.php");?>
 
 </div>
 
