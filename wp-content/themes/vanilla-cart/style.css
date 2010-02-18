@@ -100,11 +100,12 @@ a:focus, a:hover, a:active {
 #nav {
 	background:#414A4A;
 	color:#fff;
-  float:left;
-	margin: 0px auto;
-	padding:10px;
+	width: 780px;
+	height:60px;
+	margin: 5px auto 0px;
+	padding: 0px;
+	overflow: hidden;
 	text-align:center;
-	width:100%;
 	-moz-border-radius: 5px;
 	-khtml-border-radius: 5px;
 	-webkit-border-radius: 5px;
