@@ -82,14 +82,14 @@ a:focus, a:hover, a:active {
 	}
 	
 #header h1 a, #header h1 a:visited {
-	color: #666;
+	color: #fff;
 	margin: 0px;
 	padding: 0px;
 	text-decoration: none;
 	}
 	
 #header h1 a:hover {
-	color: #999;
+	color: #fff;
 	text-decoration: none;
 	}
 
