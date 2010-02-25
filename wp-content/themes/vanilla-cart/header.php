@@ -46,14 +46,12 @@ foreach ($options as $value) {
 }
 ?>
     <h1><a href="<?php echo get_settings('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
-		
+	
 	<ul id="nav">
-		<?php if (is_home()) { ?>
-            <li class="current_page_item"><a href="<?php echo get_option('home'); ?>">Acceuil</a></li>
-        <?php } else { ?>
-            <li><a href="<?php echo get_option('home'); ?>">Acceuil</a></li>
-        <?php } ?>    
-        <?php wp_list_pages('title_li=&depth=1&sort_column=menu_order'); ?>
+		<li><a href="/">Acceuil</a></li>
+		<li><a href="/catalog/" title="Catalog">Catalog</a></li>
+		<li><a href="/profil/" title="Profil">Profil</a></li>
+		<li><a href="/presse/" title="Presse">Presse</a></li>
 	</ul>
 
 </div>
