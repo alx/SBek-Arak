@@ -3,7 +3,7 @@
 <div id="content">
 	<div id="contentleft">
 		<div class="postarea">
-			<?php show_cats_brands(); ?>
+			<?php nzshpcrt_display_categories_groups(); ?>
         </div>
 	</div>
 </div>
