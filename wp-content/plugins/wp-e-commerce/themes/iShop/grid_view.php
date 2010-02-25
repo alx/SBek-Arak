@@ -25,7 +25,7 @@ $image_height = get_option('product_image_height');
 			<div class='wpsc_categories wpsc_category_grid'>
 				<?php wpsc_start_category_query(array('category_group'=> 1, 'show_thumbnails'=> 1)); ?>
 					<a href="<?php wpsc_print_category_url();?>" class="wpsc_category_grid_item" title='<?php wpsc_print_category_name();?>'>
-						<?php wpsc_print_category_image(45, 45); ?>
+						<?php wpsc_print_category_image(120, 120); ?>
 					</a>
 					<?php wpsc_print_subcategory("", ""); ?>
 				<?php wpsc_end_category_query(); ?>
