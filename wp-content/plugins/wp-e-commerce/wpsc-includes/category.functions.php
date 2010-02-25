@@ -207,7 +207,7 @@ function wpsc_display_category_loop($query, $category_html){
 		$category_image_html = '';
     if(($query['show_thumbnails'] == 1)) {
       if(($category_row['image'] != '') && is_file(WPSC_CATEGORY_DIR.$category_row['image'])) {
-				$category_image_html = "<img src='$category_image' alt='{$category_row['name']}' title='{$category_row['name']}' class='wpsc_category_image' />";
+				$category_image_html = "<img src='$category_image' alt='{$category_row['name']}' title='{$category_row['name']}' class='wpsc_category_image' width='{$query['image_size']['width']}px' height='{$query['image_size']['height']}px'/>";
       } else {
 				$category_image_html = "";
 				$category_image_html .= "				<span class='wpsc_category_image item_no_image ' style='width: {$width}px; height: {$height}px;'>\n\r";
