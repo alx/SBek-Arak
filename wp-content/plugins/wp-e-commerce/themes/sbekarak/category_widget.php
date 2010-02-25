@@ -29,6 +29,7 @@
 				<?php wpsc_start_category_query($category_settings); ?>
 					<a href="<?php wpsc_print_category_url();?>" class="wpsc_category_grid_item" title='<?php wpsc_print_category_name();?>'>
 						<?php wpsc_print_category_image(120, 120); ?>
+						<p><?php wpsc_print_category_name();?></p>
 					</a>
 					<?php wpsc_print_subcategory("", ""); ?>
 				<?php wpsc_end_category_query(); ?>
