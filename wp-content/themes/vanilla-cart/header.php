@@ -31,9 +31,7 @@ sfHover = function() {
 }
 if (window.attachEvent) window.attachEvent("onload", sfHover);
 //--><!]]></script>
-
-
-
+<script type='text/javascript' src='/wp-content/themes/sbekarak/jquery.elementstack.js'></script> 
 </head>
 
 <body>
