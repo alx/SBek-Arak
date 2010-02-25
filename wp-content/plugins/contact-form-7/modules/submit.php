@@ -34,14 +34,14 @@ function wpcf7_submit_shortcode_handler( $tag ) {
 	if ( $class_att )
 		$atts .= ' class="' . trim( $class_att ) . '"';
 
-	$value = $values[0];
+	$value = isset( $values[0] ) ? $values[0] : '';
 	if ( empty( $value ) )
 		$value = __( 'Send', 'wpcf7' );
 
-	$ajax_loader_image_url = wpcf7_plugin_url( 'images/ajax-loader.gif' );
-
 	$html = '<input type="submit" value="' . esc_attr( $value ) . '"' . $atts . ' />';
-	$html .= ' <img class="ajax-loader" style="visibility: hidden;" alt="ajax loader" src="' . $ajax_loader_image_url . '" />';
+
+	if ( wpcf7_script_is() )
+		$html .= ' <img class="ajax-loader" style="visibility: hidden;" alt="ajax loader" src="' . wpcf7_plugin_url( 'images/ajax-loader.gif' ) . '" />';
 
 	return $html;
 }

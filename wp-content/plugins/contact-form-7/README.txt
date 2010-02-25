@@ -1,10 +1,10 @@
 === Contact Form 7 ===
 Contributors: takayukister
-Donate link: http://pledgie.com/campaigns/3117
+Donate link: http://contactform7.com/donate/
 Tags: contact, form, contact form, feedback, email, ajax, captcha, akismet, multilingual
 Requires at least: 2.8
-Tested up to: 2.9.1
-Stable tag: 2.1.1
+Tested up to: 2.9.2
+Stable tag: 2.1.2
 
 Just another contact form plugin. Simple but flexible.
 
@@ -45,6 +45,7 @@ Contact Form 7 can manage multiple contact forms, plus you can customize the for
 * Korean (ko_KR) - Seong Eun Lee, [Jong-In Kim](http://incommunity.codex.kr/wordpress/)
 * Latvian (lv) - [Sandis Veinbergs](http://www.kleofass.lv/)
 * Lithuanian (lt_LT) - [Ernestas Kardzys](http://www.ernestas.info/)
+* Malayalam (ml_IN) - [RAHUL.S.A](http://www.infution.co.cc/)
 * Norwegian (nb_NO) - Kjetil M. Bergem, [aanvik.net](http://www.aanvik.net)
 * Persian (Farsi; fa_IR) - [Mohammad Musavi](http://www.musavis.com/)
 * Polish (pl_PL) - [Zbigniew Czernik](http://zibik.jogger.pl/), [Daniel Fruzynski](http://www.poradnik-webmastera.com)
@@ -88,6 +89,13 @@ Do you have questions or issues with Contact Form 7? Use these support channels 
 1. screenshot-1.png
 
 == Changelog ==
+
+= 2.1.2 =
+
+* Incorrect JSON syntax causing conflict with jQuery 1.4 has been fixed.
+* Some incompatibility issues with IE in admin panel have been fixed.
+* The logic verifying if a plugin’s JavaScript is loaded has been improved.
+* Translations for German (Ivan Graf) and Slovak (Patrik Bóna) have been updated. Translation for Malayalam has been created by RAHUL S.A.
 
 = 2.1.1 =
 

@@ -40,8 +40,8 @@ class WPCF7_ContactForm {
 
 		$url = wpcf7_get_request_uri();
 
-		if ( $frag = strstr( $uri, '#' ) )
-			$uri = substr( $uri, 0, -strlen( $frag ) );
+		if ( $frag = strstr( $url, '#' ) )
+			$url = substr( $url, 0, -strlen( $frag ) );
 
 		$url .= '#' . $this->unit_tag;
 
@@ -74,6 +74,7 @@ class WPCF7_ContactForm {
 
 	function form_response_output() {
 		$class = 'wpcf7-response-output';
+		$content = '';
 
 		if ( $this->is_posted() ) { // Post response output for non-AJAX
 			if ( isset( $_POST['_wpcf7_mail_sent'] ) && $_POST['_wpcf7_mail_sent']['id'] == $this->id ) {
