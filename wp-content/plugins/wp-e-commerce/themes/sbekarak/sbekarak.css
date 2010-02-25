@@ -1455,7 +1455,7 @@ div.wpsc_page_numbers a.selected {
 
 .wpsc_category_grid a.wpsc_category_grid_item {
 	display: block;
-	margin: 0px 20px 20px 0px;
+	margin: 0px 20px 0px 20px;
 	float: left;
 }
 
