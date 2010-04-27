@@ -1447,10 +1447,12 @@ div.wpsc_page_numbers a.selected {
 }
 
 .wpsc_category_grid {
-	margin: 0px auto;
-	padding: 30px;
-	text-align: center;
-	width: 480px;
+	margin: 10px auto;
+	width: 450px;
+}
+
+.wpsc_category_grid a {
+	padding: 0px 10px 0px 10px;
 }
 
 .wpsc_category_grid a.wpsc_category_grid_item {
