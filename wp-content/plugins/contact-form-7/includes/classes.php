@@ -331,7 +331,7 @@ class WPCF7_ContactForm {
 	}
 
 	function compose_and_send_mail( $mail_template ) {
-		$regex = '/\[\s*([a-zA-Z][0-9a-zA-Z:._-]*)\s*\]/';
+		$regex = '/\[\s*([a-zA-Z_][0-9a-zA-Z:._-]*)\s*\]/';
 		$callback = array( &$this, 'mail_callback' );
 
 		$subject = preg_replace_callback( $regex, $callback, $mail_template['subject'] );
@@ -370,10 +370,13 @@ class WPCF7_ContactForm {
 			$submitted = $this->posted_data[$matches[1]];
 
 			if ( is_array( $submitted ) )
-				$submitted = join( ', ', $submitted );
+				$replaced = join( ', ', $submitted );
+			else
+				$replaced = $submitted;
 
-			return stripslashes( $submitted );
+			$replaced = apply_filters( 'wpcf7_mail_tag_replaced', $replaced, $submitted );
 
+			return stripslashes( $replaced );
 		}
 
 		if ( $special = apply_filters( 'wpcf7_special_mail_tags', '', $matches[1] ) )
@@ -445,9 +448,7 @@ class WPCF7_ContactForm {
 	/* Save */
 
 	function save() {
-		global $wpdb;
-
-		$table_name = wpcf7_table_name();
+		global $wpdb, $wpcf7;
 
 		$fields = array(
 			'title' => maybe_serialize( stripslashes_deep( $this->title ) ),
@@ -459,7 +460,7 @@ class WPCF7_ContactForm {
 				maybe_serialize( stripslashes_deep( $this->additional_settings ) ) );
 
 		if ( $this->initial ) {
-			$result = $wpdb->insert( $table_name, $fields );
+			$result = $wpdb->insert( $wpcf7->contactforms, $fields );
 
 			if ( $result ) {
 				$this->initial = false;
@@ -474,7 +475,7 @@ class WPCF7_ContactForm {
 			if ( ! (int) $this->id )
 				return false; // Missing ID
 
-			$result = $wpdb->update( $table_name, $fields,
+			$result = $wpdb->update( $wpcf7->contactforms, $fields,
 				array( 'cf7_unit_id' => absint( $this->id ) ) );
 
 			if ( false !== $result ) {
@@ -503,15 +504,13 @@ class WPCF7_ContactForm {
 	}
 
 	function delete() {
-		global $wpdb;
+		global $wpdb, $wpcf7;
 
 		if ( $this->initial )
 			return;
 
-		$table_name = wpcf7_table_name();
-
 		$query = $wpdb->prepare(
-			"DELETE FROM $table_name WHERE cf7_unit_id = %d LIMIT 1",
+			"DELETE FROM $wpcf7->contactforms WHERE cf7_unit_id = %d LIMIT 1",
 			absint( $this->id ) );
 
 		$wpdb->query( $query );
@@ -522,13 +521,9 @@ class WPCF7_ContactForm {
 }
 
 function wpcf7_contact_form( $id ) {
-	global $wpdb;
+	global $wpdb, $wpcf7;
 
-	$table_name = wpcf7_table_name();
-
-	$id = (int) $id;
-
-	$query = $wpdb->prepare( "SELECT * FROM $table_name WHERE cf7_unit_id = %d", $id );
+	$query = $wpdb->prepare( "SELECT * FROM $wpcf7->contactforms WHERE cf7_unit_id = %d", $id );
 
 	if ( ! $row = $wpdb->get_row( $query ) )
 		return false; // No data
@@ -580,12 +575,24 @@ function wpcf7_contact_form_default_pack( $locale = null ) {
 
 /* Default Filters */
 
-add_filter( 'wpcf7_special_mail_tags', 'wpcf7_special_mail_tag_for_remote_ip', 10, 2 );
+add_filter( 'wpcf7_special_mail_tags', 'wpcf7_special_mail_tag', 10, 2 );
 
-function wpcf7_special_mail_tag_for_remote_ip( $output, $name ) {
-	// Special [wpcf7.remote_ip] tag
-	if ( 'wpcf7.remote_ip' == $name )
+function wpcf7_special_mail_tag( $output, $name ) {
+
+	// For backwards compat.
+	$name = preg_replace( '/^wpcf7\./', '_', $name );
+
+	if ( '_remote_ip' == $name )
 		$output = preg_replace( '/[^0-9a-f.:, ]/', '', $_SERVER['REMOTE_ADDR'] );
+
+	elseif ( '_url' == $name )
+		$output = get_option( 'home' ) . wpcf7_get_request_uri();
+
+	elseif ( '_date' == $name )
+		$output = date_i18n( get_option( 'date_format' ) );
+
+	elseif ( '_time' == $name )
+		$output = date_i18n( get_option( 'time_format' ) );
 
 	return $output;
 }
@@ -593,6 +600,7 @@ function wpcf7_special_mail_tag_for_remote_ip( $output, $name ) {
 add_filter( 'wpcf7_special_mail_tags', 'wpcf7_special_mail_tag_for_post_data', 10, 2 );
 
 function wpcf7_special_mail_tag_for_post_data( $output, $name ) {
+
 	if ( ! isset( $_POST['_wpcf7_unit_tag'] ) || empty( $_POST['_wpcf7_unit_tag'] ) )
 		return $output;
 
@@ -604,15 +612,28 @@ function wpcf7_special_mail_tag_for_post_data( $output, $name ) {
 	if ( ! $post = get_post( $post_id ) )
 		return $output;
 
-	if ( 'wpcf7.post_id' == $name ) { // Special [wpcf7.post_id] tag
+	$user = new WP_User( $post->post_author );
+
+	// For backwards compat.
+	$name = preg_replace( '/^wpcf7\./', '_', $name );
+
+	if ( '_post_id' == $name )
 		$output = (string) $post->ID;
-	} elseif ( 'wpcf7.post_name' == $name ) { // Special [wpcf7.post_name] tag
+
+	elseif ( '_post_name' == $name )
 		$output = $post->post_name;
-	} elseif ( 'wpcf7.post_title' == $name ) { // Special [wpcf7.post_title] tag
+
+	elseif ( '_post_title' == $name )
 		$output = $post->post_title;
-	} elseif ( 'wpcf7.post_url' == $name ) { // Special [wpcf7.post_url] tag
+
+	elseif ( '_post_url' == $name )
 		$output = get_permalink( $post->ID );
-	}
+
+	elseif ( '_post_author' == $name )
+		$output = $user->display_name;
+
+	elseif ( '_post_author_email' == $name )
+		$output = $user->user_email;
 
 	return $output;
 }

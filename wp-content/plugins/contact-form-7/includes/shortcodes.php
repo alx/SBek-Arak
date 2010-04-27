@@ -59,11 +59,16 @@ class WPCF7_ShortcodeManager {
 
 		if ( is_array( $attr ) ) {
 			if ( is_array( $attr['options'] ) ) {
-				if ( $this->shortcode_tags[$tag]['has_name'] && ! empty( $attr['options'] ) )
+				if ( $this->shortcode_tags[$tag]['has_name'] && ! empty( $attr['options'] ) ) {
 					$scanned_tag['name'] = array_shift( $attr['options'] );
+
+					if ( ! wpcf7_is_name( $scanned_tag['name'] ) )
+						return $m[0]; // Invalid name is used. Ignore this tag.
+				}
 
 				$scanned_tag['options'] = (array) $attr['options'];
 			}
+
 			$scanned_tag['raw_values'] = (array) $attr['values'];
 
 			if ( WPCF7_USE_PIPE ) {
@@ -84,12 +89,12 @@ class WPCF7_ShortcodeManager {
 		$content = preg_replace( "/<br\s*\/?>$/m", '', $content );
 		$scanned_tag['content'] = $content;
 
+		$scanned_tag = apply_filters( 'wpcf7_form_tag', $scanned_tag, $this->exec );
+
 		$this->scanned_tags[] = $scanned_tag;
 
-		$func = $this->shortcode_tags[$tag]['function'];
-
 		if ( $this->exec ) {
-			$scanned_tag = apply_filters( 'wpcf7_form_tag', $scanned_tag );
+			$func = $this->shortcode_tags[$tag]['function'];
 			return $m[1] . call_user_func( $func, $scanned_tag ) . $m[6];
 		} else {
 			return $m[0];
@@ -101,7 +106,7 @@ class WPCF7_ShortcodeManager {
 		$text = preg_replace( "/[\x{00a0}\x{200b}]+/u", " ", $text );
 		$text = stripcslashes( trim( $text ) );
 
-		$pattern = '%^([-0-9a-zA-Z:.#_/|\s]*?)((?:\s*"[^"]*"|\s*\'[^\']*\')*)$%';
+		$pattern = '%^([-+*=0-9a-zA-Z:.!?#$&@_/|\%\s]*?)((?:\s*"[^"]*"|\s*\'[^\']*\')*)$%';
 
 		if ( preg_match( $pattern, $text, $match ) ) {
 			if ( ! empty( $match[1] ) ) {
