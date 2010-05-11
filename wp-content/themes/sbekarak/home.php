@@ -42,27 +42,19 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 
 <body>
     
-    <div class="entete1" align="center"><img src="../kadomaru-gif/HEADTOP.gif" /></div> 
-    <div class="entete" align="center">SBek Arak</div> 
-    <div class="entete2" align="center"><img src="../kadomaru-gif/HEADBOTTOM.gif" /></div> 
-    <div class="footer1"><img src="../kadomaru-gif/FOOTTOP.gif" /><div> 
-    <div class="footer a"> 
-    <table align="center" cellpadding="5"> 
-    <tr> 
-    <td><a href="../catalogue.html">English</a></td> 
-    <td><a href="../fr_catalogue.html">Français</a></td> 
-    <td><a href="../it_catalogue.html">Italiano</a></td> 
-    <td><a href="../jp_catalogue.html">Japanese</a></td> 
-    </tr> 
-    <tr> 
-    <td colspan="4"><a href="">...UNDER CONSTRUCTION...</a></td> 
-    </tr> 
-    </table> 
-    </div> 
-    <div class="footer2"><img src="../kadomaru-gif/FOOTBOTTOM.gif" /></div> 
-    </center>
-                                    
+    <div id="home_title">
+        <img src="<?php bloginfo('template_url'); ?>/images/title.png">
+    </div>
+    <div id="home_nav">
+        <ul id="home_navlist">
+            <li><a href="/catalog_en">English</a></li>
+            <li><a href="/catalog_fr">Fran&ccedil;ais</a></li>
+            <li><a href="/catalog_it">Italien</a></li>
+            <li><a href="/catalog_jp">Japanese</a></li>
+        </ul>
+    </div>
+    
     <?php do_action('wp_footer'); ?>
-
+    
 </body>
 </html>

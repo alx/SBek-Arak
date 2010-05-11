@@ -99,7 +99,7 @@ a:focus, a:hover, a:active {
 	-moz-border-radius: 5px;
 	-khtml-border-radius: 5px;
 	-webkit-border-radius: 5px;
-	}
+}
 	
 #nav ul {
 	list-style: none;
@@ -129,7 +129,57 @@ a:focus, a:hover, a:active {
 	color:#fff;
 	text-decoration: none;
 	}
-	
+
+/************************************************
+*	Home
+************************************************/
+
+#home_title{
+  background:#5e8828;
+  color:#fff;
+  height:200px;
+  margin: 5px auto;
+  margin-top:50px;
+  padding: 10px;
+  text-align:center;
+  width:800px;
+  -moz-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+#home_title img{
+  margin: 80px auto;
+}
+
+#home_nav{
+  background:#414A4A;
+  color:#fff;
+  height:150px;
+  margin: 5px auto;
+  padding: 100px 10px 5px 10px;
+  text-align:center;
+  width:800px;
+  -moz-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+#home_navlist ul {
+  margin: 0px auto;
+}
+
+#home_navlist li {
+  display: inline;
+  list-style-type: none;
+  padding-right: 20px;
+}
+
+#home_navlist a{
+  color: #fff;
+  font-size:20px;
+}
+
 /************************************************
 *	Content 					     		    * 
 ************************************************/
@@ -951,7 +1001,7 @@ input.wpsc_buy_button:hover { background:#666; }
     margin: 15px auto;
 }
 
-img {
+#wrapper img {
     position: relative;
     float: left;
     padding: 0;
