@@ -26,14 +26,37 @@ global $wpsc_query, $wpdb;
                 <?php if(get_option('show_thumbnails')) :?>
                     <div class="imagecol">
                         <?php if(wpsc_the_product_thumbnail()) :?>
-                            <a rel="<?php echo str_replace(array(" ", '"',"'", '&quot;','&#039;'), array("_", "", "", "",''), wpsc_the_product_title()); ?>" class="thickbox preview_link" href="#TB_inline?height=155&width=300&modal=true&inlineId=thickbox_<?php echo wpsc_the_product_id(); ?>">
+                            <a rel="<?php echo str_replace(array(" ", '"',"'", '&quot;','&#039;'), array("_", "", "", "",''), wpsc_the_product_title()); ?>" class="thickbox preview_link" href="#TB_inline?height=250&width=400&modal=true&inlineId=thickbox_<?php echo wpsc_the_product_id(); ?>">
                                 <img class="product_image" id="product_image_<?php echo wpsc_the_product_id(); ?>" alt="<?php echo wpsc_the_product_title(); ?>" title="<?php echo wpsc_the_product_title(); ?>" src="<?php echo wpsc_the_product_thumbnail(); ?>"/>
                             </a>
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>
                 <div id="thickbox_<?php echo wpsc_the_product_id(); ?>" style="display:none">
-                    just a test
+                    <div class="left_panel" style="display:block;float:left;width:200px;">
+                        <img class="product_image" id="product_image_<?php echo wpsc_the_product_id(); ?>" alt="<?php echo wpsc_the_product_title(); ?>" title="<?php echo wpsc_the_product_title(); ?>" src="<?php echo wpsc_the_product_thumbnail(); ?>"/><br>
+                    </div>
+                    <div class="right_panel" style="display:block;float:left;">
+                        <h1><?php echo wpsc_the_product_title(); ?></h1>
+                        <div class='wpsc_description'><?php echo wpsc_the_product_description(); ?></div>
+                        
+                        <?php if(wpsc_product_has_stock()) : ?>
+                        <div class='wpsc_buy_button_container'>
+                            <?php if(wpsc_product_external_link(wpsc_the_product_id()) != '') : ?>
+                            <?php 	$action =  wpsc_product_external_link(wpsc_the_product_id()); ?>
+                            <input class="wpsc_buy_button" type='button' value='<?php echo __('Buy Now', 'wpsc'); ?>' onclick='gotoexternallink("<?php echo $action; ?>")'>
+                        <?php else: ?>
+                            <input type="submit" value="<?php echo __('Add To Cart', 'wpsc'); ?>" name="Buy" class="wpsc_buy_button" id="product_<?php echo wpsc_the_product_id(); ?>_submit_button"/>
+                        <?php endif; ?>
+                            <div class='wpsc_loading_animation'>
+                                <img title="Loading" alt="Loading" src="<?php echo WPSC_URL; ?>/images/indicator.gif" class="loadingimage"/>
+                            <?php echo __('Updating cart...', 'wpsc'); ?>
+                            </div>
+                        </div>
+                        <?php else : ?>
+                        <p class='soldout'><?php echo __('This product has sold out.', 'wpsc'); ?></p>
+                        <?php endif ; ?>
+                    </div>
                 </div>
             </div>
         <?php endwhile; ?>
