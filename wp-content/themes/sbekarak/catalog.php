@@ -8,11 +8,17 @@ get_header(); ?>
 
 	<div id="contentleft">
 	    
-	    <div class='wpsc_categories wpsc_category_grid'>
-			<?php echo wpsc_display_products_page(array('category_url_name'=>'au-quotidien')); ?>
-			<?php echo wpsc_display_products_page(array('category_url_name'=>'soiree')); ?>
-			<?php echo wpsc_display_products_page(array('category_url_name'=>'mini')); ?>
-		</div>
+        <div class="postarea">
+    
+            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+            
+            <?php the_content(__('Read more'));?><div style="clear:both;"></div><?php edit_post_link('(Edit)', '', ''); ?>
+            
+            <?php endwhile; else: ?>
+            
+            <p><?php _e('Sorry, no posts matched your criteria.'); ?></p><?php endif; ?>
+            
+        </div>
 		
 	</div>
 
