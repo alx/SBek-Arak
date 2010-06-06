@@ -1,7 +1,7 @@
 <?php
 /*
  
- $Id: sitemap-core.php 224413 2010-04-02 15:54:52Z arnee $
+ $Id: sitemap-core.php 246875 2010-05-29 07:22:02Z arnee $
 
 */
 
@@ -22,7 +22,7 @@ class GoogleSitemapGeneratorStatus {
 		
 		$exists = get_option("sm_status");
 		
-		if($exists === false) add_option("sm_status","","Status","no");
+		if($exists === false) add_option("sm_status","",null,"no");
 		
 		$this->Save();
 	}
@@ -746,7 +746,7 @@ class GoogleSitemapGenerator {
 	/**
 	 * @var Version of the generator in SVN
 	*/
-	var $_svnVersion = '$Id: sitemap-core.php 224413 2010-04-02 15:54:52Z arnee $';
+	var $_svnVersion = '$Id: sitemap-core.php 246875 2010-05-29 07:22:02Z arnee $';
 	
 	/**
 	 * @var array The unserialized array with the stored options
@@ -831,7 +831,7 @@ class GoogleSitemapGenerator {
 			//function to detect if you are on an admin page. So we have to copy
 			//the get_home_path function in our own...
 			$home = get_option( 'home' );
-			if ( $home != '' && $home != get_option( 'siteurl' ) ) {
+			if ( $home != '' && $home != get_option( 'url' ) ) {
 				$home_path = parse_url( $home );
 				$home_path = $home_path['path'];
 				$root = str_replace( $_SERVER["PHP_SELF"], '', $_SERVER["SCRIPT_FILENAME"] );
@@ -1333,7 +1333,7 @@ class GoogleSitemapGenerator {
 		} else {
 			delete_option("sm_cpages");
 			//Add the option, Note the autoload=false because when the autoload happens, our class GoogleSitemapGeneratorPage doesn't exist
-			add_option("sm_cpages",$this->_pages,"Storage for custom pages of the sitemap plugin","no");
+			add_option("sm_cpages",$this->_pages,null,"no");
 			return true;
 		}
 	}
@@ -1353,7 +1353,7 @@ class GoogleSitemapGenerator {
 		if(!$forceAuto && $this->GetOption("b_location_mode")=="manual") {
 			return $this->GetOption("b_fileurl_manual");
 		} else {
-			return trailingslashit(get_bloginfo('siteurl')). $this->GetOption("b_filename");
+			return trailingslashit(get_bloginfo('url')). $this->GetOption("b_filename");
 		}
 	}
 
@@ -2047,7 +2047,7 @@ class GoogleSitemapGenerator {
 				//We retrieve only users with published and not password protected posts (and not pages)
 				//WP2.1 introduced post_status='future', for earlier WP versions we need to check the post_date_gmt
 				$sql = "SELECT DISTINCT
-							p.ID,
+							u.ID,
 							u.user_nicename,
 							MAX(p.post_modified_gmt) AS last_post
 						FROM
