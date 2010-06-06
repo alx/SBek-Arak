@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Catalog
+Template Name: CatalogFR
 */
 get_header(); ?>
 
