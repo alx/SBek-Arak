@@ -33,7 +33,7 @@ global $wpsc_query, $wpdb;
                     </div>
                 <?php endif; ?>
                 <div id="thickbox_<?php echo wpsc_the_product_id(); ?>" style="display:none">
-                    <div class="left_panel" style="display:block;float:left;width:400px;">
+                    <div class="left_panel" style="display:block;float:left;width:434px;">
                         <img class="product_image" id="product_image_<?php echo wpsc_the_product_id(); ?>" alt="<?php echo wpsc_the_product_title(); ?>" title="<?php echo wpsc_the_product_title(); ?>" src="<?php echo wpsc_the_product_image(400, 400); ?>"/><br>
                     </div>
                     <div class="right_panel" style="display:block;float:left;">
