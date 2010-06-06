@@ -213,9 +213,10 @@ function wpsc_insert_product($post_data, $wpsc_error = false) {
 		// strip slashes, trim whitespace, convert to lowercase
 		$tidied_name = strtolower(trim(stripslashes($post_data['name'])));
 		// convert " - " to "-", all other spaces to dashes, and remove all foward slashes.
-		//$url_name = preg_replace(array("/(\s-\s)+/","/(\s)+/", "/(\/)+/"), array("-","-", ""), $tidied_name);
+		$url_name = preg_replace(array("/(\s-\s)+/","/(\s)+/", "/(\/)+/"), array("-","-", ""), $tidied_name);
 		$url_name =  sanitize_title($tidied_name);
-		
+		$url_name = apply_filters('editable_slug',$tidied_name);
+
 		// Select all similar names, using an escaped version of the URL name 
 		$similar_names = (array)$wpdb->get_col("SELECT `meta_value` FROM `".WPSC_TABLE_PRODUCTMETA."` WHERE `product_id` NOT IN('{$product_id}}') AND `meta_key` IN ('url_name') AND `meta_value` REGEXP '^(".$wpdb->escape(preg_quote($url_name))."){1}[[:digit:]]*$' ");
 
@@ -614,14 +615,20 @@ function wpsc_resize_image_thumbnail($product_id, $image_action= 0, $width = 0, 
 			}
 			
 			if(!file_exists(WPSC_IMAGE_DIR.$image)) {
-				$wpdb->query("INSERT INTO `".WPSC_TABLE_PRODUCT_IMAGES."` SET `thumbnail_state` = '$image_action' WHERE `id`='{$product_id}' LIMIT 1");
+				//$wpdb->query("INSERT INTO `".WPSC_TABLE_PRODUCT_IMAGES."` SET `thumbnail_state` = '$image_action' WHERE `id`='{$product_id}' LIMIT 1");
+				if($image_action != 3){
 				$sql = "INSERT INTO `".WPSC_TABLE_PRODUCT_IMAGES."` (`product_id`, `image`, `width`, `height`) VALUES ('{$product_id}', '{$image}', '{$width}', '{$height}' )";
 				$wpdb->query($sql);	
-				$image_id = (int) $wpdb->insert_id;
+				
+					$image_id = (int) $wpdb->insert_id;
+				}
+			}
+			if($image_action != 3){
+				$sql="UPDATE `".WPSC_TABLE_PRODUCT_LIST."` SET `thumbnail_state` = '$image_action', `image` ='{$image_id}' WHERE `id`='{$product_id}' LIMIT 1";
+			}else{
+	$sql="UPDATE `".WPSC_TABLE_PRODUCT_LIST."` SET `thumbnail_state` = '$image_action', `image` ='{$image_id}',`thumbnail_image`='{$image}' WHERE `id`='{$product_id}' LIMIT 1";
 			}
 			
-			$sql="UPDATE `".WPSC_TABLE_PRODUCT_LIST."` SET `thumbnail_state` = '$image_action', `image` ='{$image_id}' WHERE `id`='{$product_id}' LIMIT 1";
-			//exit($sql);
 			$wpdb->query($sql);
 		} else {
 			//if it is not, we need to unset the associated image
@@ -840,21 +847,5 @@ function wpsc_item_add_preview_file($product_id, $preview_file) {
  		return $selected_files;
    }  
 }
-
-
-function wpsc_send_to_google_base($product_data) {
-	require_once('google_base_functions.php');
-	if (strlen(get_option('wpsc_google_base_token')) > 0) {
-	  $token = get_option('wpsc_google_base_token');
-// 		if (isset($_SESSION['google_base_sessionToken'])) {
-// 			$sessionToken = $_SESSION['google_base_sessionToken'];
-// 		} else {
-			$sessionToken = exchangeToken($token);
-// 			$_SESSION['google_base_sessionToken'] = $sessionToken;
-// 		}
-		postItem($product_data['name'], $product_data['price'], $product_data['description'], $sessionToken);
-	}
-}
-
 
 ?>
