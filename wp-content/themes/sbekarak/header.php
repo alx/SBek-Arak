@@ -43,7 +43,7 @@ foreach ($options as $value) {
     if (get_settings( $value['id'] ) === FALSE) { $$value['id'] = $value['std']; } else { $$value['id'] = get_settings( $value['id'] ); }
 }
 ?>
-    <h1><a href="<?php echo get_settings('home'); ?>/"><img src="/wp-content/themes/sbekarak/images/title.png" alt="sbekarak"></a></h1>
+    <h1><a href="<?php echo get_settings('home'); ?>/"><img src="<?php bloginfo('template_url'); ?>/images/title.png" alt="sbekarak"></a></h1>
 	
 	<ul id="nav">
 		<li><a href="/">Acceuil</a></li>
