@@ -226,12 +226,8 @@ p.empty,p.visitshop{
 div.productdisplay{
  position:relative;
  float:left;
- clear:both;
- top:0px;
- left: 0px;
  margin-bottom: 12px;
  padding: 0px;
- width: 100%;
  text-align: left !important;
 /*   border: 1px solid red; */
  }
@@ -1533,4 +1529,8 @@ position:relative;
 
 .postarea{
   padding:140px 0px;
+}
+
+#products_page_container{
+  padding:20px 0px;
 }
