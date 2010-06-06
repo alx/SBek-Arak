@@ -44,7 +44,7 @@ global $wpsc_query, $wpdb;
                         </div>
                         
                         <?php if(wpsc_product_has_stock()) : ?>
-                        <div class='wpsc_buy_button_container'>
+                        <div class='wpsc_buy_button_container' style="padding:0px 15px 15px 0px;">
                             <?php if(wpsc_product_external_link(wpsc_the_product_id()) != '') : ?>
                             <?php 	$action =  wpsc_product_external_link(wpsc_the_product_id()); ?>
                             <input class="wpsc_buy_button" type='button' value='<?php echo __('Buy Now', 'wpsc'); ?>' onclick='gotoexternallink("<?php echo $action; ?>")'>
