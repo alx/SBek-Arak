@@ -8,17 +8,15 @@ get_header(); ?>
 
 	<div id="contentleft">
 	    
-        <div class="postarea">
-    
-            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-            
-            <?php the_content(__('Read more'));?><div style="clear:both;"></div><?php edit_post_link('(Edit)', '', ''); ?>
-            
-            <?php endwhile; else: ?>
-            
-            <p><?php _e('Sorry, no posts matched your criteria.'); ?></p><?php endif; ?>
-            
-        </div>
+	    <div class='wpsc_categories wpsc_category_grid'>
+			<?php wpsc_start_category_query(array('category_group'=> get_option('wpsc_default_category'), 'show_thumbnails'=> 1)); ?>
+				<a href="<?php wpsc_print_category_url();?>" class="wpsc_category_grid_item" title='<?php wpsc_print_category_name();?>'>
+					<?php wpsc_print_category_image(170, 170); ?>
+				</a>
+				<?php wpsc_print_subcategory("", ""); ?>
+			<?php wpsc_end_category_query(); ?>
+			<div class='clear_category_group'></div>
+		</div>
 		
 	</div>
 
