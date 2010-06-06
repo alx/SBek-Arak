@@ -228,11 +228,9 @@ function legacy_comments($file) {
 */
 function wpsc_category_nice_name() {
   global $wpdb, $wpsc_query;
-  if($category_id > 0) {
-      $category_data = $wpdb->get_row("SELECT `nice-name` FROM `".WPSC_TABLE_PRODUCT_CATEGORIES."` WHERE `id` IN ('".(int)$wpsc_query->query_vars['category_id']."') AND `active` IN('1') LIMIT 1", ARRAY_A);
-      if($category_data['nice-name'] != '') {
-          return $category_data['nice-name'];
-      }
+  $category_data = $wpdb->get_row("SELECT `nice-name` FROM `".WPSC_TABLE_PRODUCT_CATEGORIES."` WHERE `id` IN ('".(int)$wpsc_query->query_vars['category_id']."') AND `active` IN('1') LIMIT 1", ARRAY_A);
+  if($category_data['nice-name'] != '') {
+      return $category_data['nice-name'];
   }
   return "";
 }
