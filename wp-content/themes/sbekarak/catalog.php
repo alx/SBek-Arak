@@ -12,7 +12,7 @@ get_header(); ?>
 			<?php wpsc_start_category_query(array('category_group'=> "1", 'show_thumbnails'=> 1, 'image_size' => array('width'=>170, 'height' => 170))); ?>
 			
 			    <h1><?php 
-				echo wpsc_category_nice_name();
+				echo wpsc_category_id();
 				?></h1>
 			
 			
