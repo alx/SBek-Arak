@@ -50,7 +50,7 @@ foreach ($options as $value) {
 		<li><a href="/profil/" title="Profil">Profil</a></li>
 		<li><a href="/presse/" title="Presse">Presse</a></li>
 		<li><a href="/contact/" title="Contact">Contact</a></li>
-		<li><a href="/sbekarak_catalog.pdf" title="Catalogue">Catalogue (pdf)</a></li>
+		<li><a href="/sbekarak_catalog_2010.pdf" title="Catalogue">Catalogue (pdf)</a></li>
 	</ul>
 
 </div>
