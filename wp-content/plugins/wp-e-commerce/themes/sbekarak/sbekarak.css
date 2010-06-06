@@ -1530,3 +1530,7 @@ position:relative;
 }
 
 /* post-content */
+
+.postarea{
+  padding:40px 0px;
+}
