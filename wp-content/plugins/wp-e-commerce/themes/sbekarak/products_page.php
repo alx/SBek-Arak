@@ -26,7 +26,7 @@ global $wpsc_query, $wpdb;
                 <?php if(get_option('show_thumbnails')) :?>
                     <div class="imagecol">
                         <?php if(wpsc_the_product_thumbnail()) :?>
-                            <a rel="<?php echo str_replace(array(" ", '"',"'", '&quot;','&#039;'), array("_", "", "", "",''), wpsc_the_product_title()); ?>" class="thickbox preview_link" href="#TB_inline?height=250&width=400&modal=true&inlineId=thickbox_<?php echo wpsc_the_product_id(); ?>">
+                            <a rel="<?php echo str_replace(array(" ", '"',"'", '&quot;','&#039;'), array("_", "", "", "",''), wpsc_the_product_title()); ?>" class="thickbox preview_link" href="#TB_inline?height=450&width=600&modal=true&inlineId=thickbox_<?php echo wpsc_the_product_id(); ?>">
                                 <img class="product_image" id="product_image_<?php echo wpsc_the_product_id(); ?>" alt="<?php echo wpsc_the_product_title(); ?>" title="<?php echo wpsc_the_product_title(); ?>" src="<?php echo wpsc_the_product_thumbnail(); ?>"/>
                             </a>
                         <?php endif; ?>
