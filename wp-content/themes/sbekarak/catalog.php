@@ -10,6 +10,13 @@ get_header(); ?>
 	    
 	    <div class='wpsc_categories wpsc_category_grid'>
 			<?php wpsc_start_category_query(array('category_group'=> "1", 'show_thumbnails'=> 1, 'image_size' => array('width'=>170, 'height' => 170))); ?>
+			
+			    <?php 
+			    $category_data = $wpdb->get_row("SELECT `nice-name` FROM `".WPSC_TABLE_PRODUCT_CATEGORIES."` WHERE `id` IN ('".(int)$category_id."') AND `active` IN('1') LIMIT 1", ARRAY_A);
+				echo $category_data['nice-name'];
+				?>
+			
+			
 				<a href="<?php wpsc_print_category_url();?>" class="wpsc_category_grid_item" title='<?php wpsc_print_category_name();?>'>
 					<?php wpsc_print_category_image(170, 170); ?><br>
 					<span class="category_title"><?php wpsc_print_category_name(); ?></span>
