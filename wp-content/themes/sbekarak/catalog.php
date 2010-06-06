@@ -12,7 +12,9 @@ get_header(); ?>
 			<?php wpsc_start_category_query(array('category_group'=> "1", 'show_thumbnails'=> 1, 'image_size' => array('width'=>170, 'height' => 170))); ?>
 				<a href="<?php wpsc_print_category_url();?>" class="wpsc_category_grid_item" title='<?php wpsc_print_category_name();?>'>
 					<?php wpsc_print_category_image(170, 170); ?>
+					<?php wpsc_print_category_name(); ?>
 				</a>
+				
 			<?php wpsc_end_category_query(); ?>
 			<div class='clear_category_group'></div>
 		</div>
