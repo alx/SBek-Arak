@@ -49,6 +49,8 @@ foreach ($options as $value) {
 		<li><a href="/">Acceuil</a></li>
 		<li><a href="/profil/" title="Profil">Profil</a></li>
 		<li><a href="/presse/" title="Presse">Presse</a></li>
+		<li><a href="/contact/" title="Contact">Contact</a></li>
+		<li><a href="/resellers/" title="Points de Vente">Points de Vente</a></li>
 	</ul>
 
 </div>
