@@ -44,7 +44,8 @@ global $wpsc_query, $wpdb;
                         </div>
                         
                         <?php if(wpsc_product_has_stock()) : ?>
-                        <div class='wpsc_buy_button_container'>
+                            <div class='wpsc_buy_button_container'>
+                        <form class='product_form'  enctype="multipart/form-data" action="<?php echo $action; ?>" method="post" name="product_<?php echo wpsc_the_product_id(); ?>" id="product_<?php echo wpsc_the_product_id(); ?>" >
                             <?php if(wpsc_product_external_link(wpsc_the_product_id()) != '') : ?>
                             <?php 	$action =  wpsc_product_external_link(wpsc_the_product_id()); ?>
                             <input class="wpsc_buy_button" type='button' value='<?php echo __('Buy Now', 'wpsc'); ?>' onclick='gotoexternallink("<?php echo $action; ?>")'>
@@ -55,6 +56,7 @@ global $wpsc_query, $wpdb;
                                 <img title="Loading" alt="Loading" src="<?php echo WPSC_URL; ?>/images/indicator.gif" class="loadingimage"/>
                             <?php echo __('Updating cart...', 'wpsc'); ?>
                             </div>
+                        </form>
                         </div>
                         <?php else : ?>
                         <p class='soldout'><?php echo __('This product has sold out.', 'wpsc'); ?></p>
