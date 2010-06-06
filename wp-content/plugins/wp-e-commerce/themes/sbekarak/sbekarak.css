@@ -1534,3 +1534,9 @@ position:relative;
 #products_page_container{
   padding:20px 0px;
 }
+
+.category_title{
+  text-decoration:none;
+  font-size:20px;
+  color:#AAA;
+}
