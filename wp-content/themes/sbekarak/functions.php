@@ -227,8 +227,8 @@ function legacy_comments($file) {
 * @param boolean permalink compatibility, adds a prefix to prevent permalink namespace conflicts
 */
 function wpsc_category_nice_name() {
-  global $wpdb, $wpsc_category_query;
-  print_r($wpsc_category_query);
+  global $wpdb, $wpsc_category_id;
+  print_r($wpsc_category_id);
   $category_data = $wpdb->get_row("SELECT `nice-name` FROM `".WPSC_TABLE_PRODUCT_CATEGORIES."` WHERE `id` IN ('".(int)$wpsc_query->query_vars['category_id']."') AND `active` IN('1') LIMIT 1", ARRAY_A);
   if($category_data['nice-name'] != '') {
       return $category_data['nice-name'];
