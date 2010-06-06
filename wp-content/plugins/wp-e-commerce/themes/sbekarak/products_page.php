@@ -47,9 +47,9 @@ global $wpsc_query, $wpdb;
                         <div class='wpsc_buy_button_container'>
                             <?php if(wpsc_product_external_link(wpsc_the_product_id()) != '') : ?>
                             <?php 	$action =  wpsc_product_external_link(wpsc_the_product_id()); ?>
-                            <input class="wpsc_buy_button" type='button' value='<?php echo __('Buy Now', 'wpsc'); ?>' onclick='gotoexternallink("<?php echo $action; ?>")'  style="padding:0px 15px 15px 0px;">
+                            <input class="wpsc_buy_button" type='button' value='<?php echo __('Buy Now', 'wpsc'); ?>' onclick='gotoexternallink("<?php echo $action; ?>")'>
                         <?php else: ?>
-                            <input type="submit" value="<?php echo __('Add To Cart', 'wpsc'); ?>" name="Buy" class="wpsc_buy_button" id="product_<?php echo wpsc_the_product_id(); ?>_submit_button"  style="padding:0px 15px 15px 0px;"/>
+                            <input type="submit" value="<?php echo __('Add To Cart', 'wpsc'); ?>" name="Buy" class="wpsc_buy_button" id="product_<?php echo wpsc_the_product_id(); ?>_submit_button"/>
                         <?php endif; ?>
                             <div class='wpsc_loading_animation'>
                                 <img title="Loading" alt="Loading" src="<?php echo WPSC_URL; ?>/images/indicator.gif" class="loadingimage"/>
