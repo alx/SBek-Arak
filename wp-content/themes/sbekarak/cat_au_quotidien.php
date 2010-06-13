@@ -31,7 +31,7 @@ get_header(); ?>
 <div id="footer">
 
     <div class="footer">
-		<a href="/catalog_fr">back</a>
+		<a href="/catalog_fr">Catalog</a>
     </div>
     
 </div>
