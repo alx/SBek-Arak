@@ -371,7 +371,9 @@ if(wpsc_cart_item_count() > 0) :
 </div>
 <?php
 else:
-	echo TXT_WPSC_BUYPRODUCTS;
+?>
+    <p>Nothing in your cart. <a href="/catalog_fr">Return shopping</a></p>
+<?php
 endif;
 do_action('wpsc_bottom_of_shopping_cart');
 ?>
