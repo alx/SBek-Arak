@@ -50,6 +50,7 @@ foreach ($options as $value) {
 		<li><a href="/presse/" title="Presse">Presse</a></li>
 		<li><a href="/contact/" title="Contact">Contact</a></li>
 		<li><a href="/sbekarak_catalog_2010.pdf" title="Catalogue">Catalogue (pdf)</a></li>
+		<li><a href="">Panier (<?php echo wpsc_cart_item_count(); ?>)</a></li>
 	</ul>
 
 </div>
