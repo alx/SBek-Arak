@@ -152,14 +152,6 @@ if(wpsc_cart_item_count() > 0) :
 	<?php endif;  ?>
 	
 	<table class="productcart">
-	<tr class="total_price total_tax">
-		<td colspan="3">
-			<?php echo TXT_WPSC_TAX; ?>
-		</td>
-		<td colspan="2">
-			<span id="checkout_tax" class="pricedisplay checkout-tax"><?php echo wpsc_cart_tax(); ?></span>
-		</td>
-	</tr>
    <?php if(wpsc_uses_shipping()) : ?>
 	<tr class="total_price total_shipping">
 		<td colspan="3">
