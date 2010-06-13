@@ -23,12 +23,7 @@ if(wpsc_cart_item_count() > 0) :
 		<tr class="product_row">
 			<td class="firstcol"><img src='<?php echo wpsc_cart_item_image(48,48); ?>' alt='<?php echo wpsc_cart_item_name(); ?>' title='<?php echo wpsc_cart_item_name(); ?>' /></td>
 			<td class="firstcol">
-			<a href='<?php echo wpsc_cart_item_url();?>'><?php
-			 echo wpsc_cart_item_name();
-			 if(wpsc_cart_item_custom_message()) {
-			 ?> (<?php echo wpsc_cart_item_custom_message() ?>)<?php
-			 }
-			 ?></a>
+			<a href='<?php echo wpsc_cart_item_url();?>'><?php echo wpsc_cart_item_name();?></a>
 			</td>
 			<td>
 				<form action="<?php echo get_option('shopping_cart_url'); ?>" method="post" class="adjustform">
