@@ -23,12 +23,12 @@ global $wpsc_query, $wpdb;
 		
 		<?php /** start the product loop here */?>
 		<?php while (wpsc_have_products()) :  wpsc_the_product(); ?>
-			<?php if(wpsc_category_transition()) :?>
-		  	<h3 class='wpsc_category_boundary'>
-		    <?php echo wpsc_current_category_name(); ?>
-				</h3>
-			<?php endif; ?>
-			<div class="productdisplay default_product_display product_view_<?php echo wpsc_the_product_id(); ?> <?php echo wpsc_category_class(); ?>">      
+			<div class="productdisplay default_product_display product_view_<?php echo wpsc_the_product_id(); ?> <?php echo wpsc_category_class(); ?>">
+			    <a rel="<?php echo str_replace(array(" ", '"',"'", '&quot;','&#039;'), array("_", "", "", "",''), wpsc_the_product_title()); ?>" class="thickbox preview_link" href="#TB_inline?height=450&width=600&modal=true&inlineId=thickbox_<?php echo wpsc_the_product_id(); ?>">
+					<img class="product_image" id="product_image_<?php echo wpsc_the_product_id(); ?>" alt="<?php echo wpsc_the_product_title(); ?>" title="<?php echo wpsc_the_product_title(); ?>" src="<?php echo wpsc_the_product_thumbnail(); ?>"/>
+				</a>
+			</div>
+			<div id="thickbox_<?php echo wpsc_the_product_id(); ?>" style="display:none">
 				<div class="textcol">
 				
 					<?php if(get_option('show_thumbnails')) :?>
