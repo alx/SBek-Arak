@@ -22,4 +22,21 @@ get_header(); ?>
 
 </div>
 
-<?php get_footer(); ?>
+<!-- begin footer -->
+
+<div style="clear:both;"></div>
+
+</div>
+                
+<div id="footer">
+
+    <div class="footer">
+		<a href="/catalog_fr">back</a>
+    </div>
+    
+</div>
+                                    
+<?php do_action('wp_footer'); ?>
+
+</body>
+</html>
