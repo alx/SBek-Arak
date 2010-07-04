@@ -9,12 +9,25 @@ get_header(); ?>
 	<div id="contentleft">
 	    
 	    <div class='wpsc_categories wpsc_category_grid'>
-			<?php wpsc_start_category_query(array('parent_category_id' => 7, 'show_thumbnails'=> 1, 'image_size' => array('width'=>170, 'height' => 170))); ?>
-				<a href="<?php wpsc_print_category_url();?>" class="wpsc_category_grid_item" title='<?php wpsc_print_category_name();?>'>
-					<?php wpsc_print_category_image(170, 170); ?>
-				</a>
-				
-			<?php wpsc_end_category_query(); ?>
+			<a href="/products-page/au-quotidien/Fringe/" class="wpsc_category_grid_item" title="Fringe">
+                <img src="/wp-content/uploads/wpsc/category_images/fringe1.png" alt="Fringe" title="Fringe" class="wpsc_category_image">
+            </a>
+
+            <a href="/products-page/au-quotidien/Fruit/" class="wpsc_category_grid_item" title="Fruit">
+                <img src="/wp-content/uploads/wpsc/category_images/fruit1.jpg" alt="Fruit" title="Fruit" class="wpsc_category_image">
+            </a>
+
+            <a href="/products-page/au-quotidien/Garden/" class="wpsc_category_grid_item" title="Garden">
+                <img src="/wp-content/uploads/wpsc/category_images/category_14_170x170.png" alt="Garden" title="Garden" class="wpsc_category_image">
+            </a>
+
+            <a href="/products-page/au-quotidien/Geo/" class="wpsc_category_grid_item" title="Geo">
+                <img src="/wp-content/uploads/wpsc/category_images/geo1.png" alt="Geo" title="Geo" class="wpsc_category_image">
+            </a>
+
+            <a href="/products-page/au-quotidien/Mix/" class="wpsc_category_grid_item" title="Mix">
+                <img src="/wp-content/uploads/wpsc/category_images/mix2.png" alt="Mix" title="Mix" class="wpsc_category_image">
+            </a>
 			<div class='clear_category_group'></div>
 		</div>
 		
@@ -31,7 +44,7 @@ get_header(); ?>
 <div id="footer">
 
     <div class="footer">
-		<a href="/catalog_fr">Catalog</a>
+		<a href="/catalog">Catalog</a>
     </div>
     
 </div>

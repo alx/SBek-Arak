@@ -9,12 +9,17 @@ get_header(); ?>
 	<div id="contentleft">
 	    
 	    <div class='wpsc_categories wpsc_category_grid'>
-			<?php wpsc_start_category_query(array('parent_category_id' => 8, 'show_thumbnails'=> 1, 'image_size' => array('width'=>170, 'height' => 170))); ?>
-				<a href="<?php wpsc_print_category_url();?>" class="wpsc_category_grid_item" title='<?php wpsc_print_category_name();?>'>
-					<?php wpsc_print_category_image(170, 170); ?>
-				</a>
-				
-			<?php wpsc_end_category_query(); ?>
+			<a href="/products-page/soiree/Kimono/" class="wpsc_category_grid_item" title="Kimono">
+                <img src="/wp-content/uploads/wpsc/category_images/grue.jpg" alt="Kimono" title="Kimono" class="wpsc_category_image">
+            </a>
+
+            <a href="/products-page/soiree/Flower/" class="wpsc_category_grid_item" title="Flower">
+                <img src="/wp-content/uploads/wpsc/category_images/fleur.jpg" alt="Flower" title="Flower" class="wpsc_category_image">
+            </a>
+
+            <a href="/products-page/soiree/Geo/" class="wpsc_category_grid_item" title="Geo">
+                <img src="/wp-content/uploads/wpsc/category_images/geo3.jpg" alt="Geo" title="Geo" class="wpsc_category_image">
+            </a>
 			<div class='clear_category_group'></div>
 		</div>
 		
@@ -31,7 +36,7 @@ get_header(); ?>
 <div id="footer">
 
     <div class="footer">
-		<a href="/catalog_fr">Catalog</a>
+		<a href="/catalog">Catalog</a>
     </div>
     
 </div>

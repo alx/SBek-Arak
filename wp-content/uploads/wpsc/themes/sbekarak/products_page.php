@@ -149,7 +149,6 @@ global $wpsc_query, $wpdb;
                     <?php endif ; ?>
                 </div>
 			</div>
-		</div>
 
 		<?php endwhile; ?>
 		<?php /** end the product loop here */?>

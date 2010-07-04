@@ -332,7 +332,7 @@ $conditions = unserialize($coupon['condition']);
   $end_timestamp = strtotime($coupon['expiry']);
   $id = $coupon['id'];
   $output = '';
-  $output .= "<form class='displaynone' name='edit_coupon' id='".$coupon['coupon_code']."' method='post' action=''>\n\r";
+  $output .= "<form name='edit_coupon' id='".$coupon['coupon_code']."' method='post' action=''>\n\r";
     $output .= "   <input type='hidden' value='true' name='is_edit_coupon' />\n\r";
   $output .= "<table class='add-coupon'>\n\r";
   $output .= " <tr>\n\r";
@@ -360,53 +360,10 @@ $conditions = unserialize($coupon['condition']);
   $output .= "  <td>\n\r";
   $coupon_start = explode(" ",$coupon['start']);
   $output .= "<input type='text' class='pickdate' size='8' name='edit_coupon[".$id."][start]' value='{$coupon_start[0]}'>";
-/*  $output .= "   <select name='edit_coupon[".$id."][start][day]'>\n\r";
-   for($i = 1; $i <=31; ++$i) {
-     $selected = '';
-     if($i == date("d", $start_timestamp)) { $selected = "selected='true'"; }
-     $output .= "    <option $selected value='$i'>$i</option>";
-     }
-  $output .= "   </select>\n\r";
-  $output .= "   <select name='edit_coupon[".$id."][start][month]'>\n\r";
-   for($i = 1; $i <=12; ++$i) {
-     $selected = '';
-     if($i == (int)date("m", $start_timestamp)) { $selected = "selected='true'"; }
-     $output .= "    <option $selected value='$i'>".date("M",mktime(0, 0, 0, $i, 1, date("Y")))."</option>";
-     }
-  $output .= "   </select>\n\r";
-  $output .= "   <select name='edit_coupon[".$id."][start][year]'>\n\r";
-   for($i = date("Y"); $i <= (date("Y") +12); ++$i) {
-     $selected = '';
-     if($i == date("Y", $start_timestamp)) { $selected = "selected='true'"; }
-     $output .= "    <option $selected value='$i'>".$i."</option>";
-     }
-  $output .= "   </select>\n\r";*/
   $output .= "  </td>\n\r";
   $output .= "  <td>\n\r";
   $coupon_expiry = explode(" ",$coupon['expiry']);
   $output .= "<input type='text' class='pickdate' size='8' name='edit_coupon[".$id."][expiry]' value='{$coupon_expiry[0]}'>";
-  /*$output .= "   <select name='edit_coupon[".$id."][expiry][day]'>\n\r";
-   for($i = 1; $i <=31; ++$i) {
-     $selected = '';
-     if($i == date("d", $end_timestamp)) { $selected = "selected='true'"; }
-     $output .= "    <option $selected value='$i'>$i</option>";
-     }
-  $output .= "   </select>\n\r";
-  $output .= "   <select name='edit_coupon[".$id."][expiry][month]'>\n\r";
-
-   for($i = 1; $i <=12; ++$i) {
-     $selected = '';
-     if($i == (int)date("m", $end_timestamp)) { $selected = "selected='true'"; }
-     $output .= "    <option $selected value='$i'>".date("M",mktime(0, 0, 0, $i, 1, date("Y")))."</option>";
-     }
-  $output .= "   </select>\n\r";
-  $output .= "   <select name='edit_coupon[".$id."][expiry][year]'>\n\r";
-   for($i = date("Y"); $i <= (date("Y") +12); ++$i) {
-     $selected = '';
-     if($i == (date("Y", $end_timestamp))) { $selected = "selected='true'"; }
-     $output .= "    <option $selected value='$i'>".$i."</option>\n\r";
-     }
-  $output .= "   </select>\n\r";*/
   $output .= "  </td>\n\r";
   $output .= "  <td>\n\r";
   $output .= "   <input type='hidden' value='0' name='edit_coupon[".$id."][use-once]' />\n\r";
@@ -422,12 +379,6 @@ $conditions = unserialize($coupon['condition']);
   $output .= "  </td>\n\r";
   $output .= "  <td>\n\r";
   $output .= "   <input type='hidden' value='".$id."' name='edit_coupon[".$id."][id]' />\n\r";
-  //$output .= "   <input type='hidden' value='false' name='add_coupon' />\n\r";
- /*
- $output .= "   <input type='submit' value='".__('Update Coupon', 'wpsc')."' name='edit_coupon[".$id."][submit_coupon]' />\n\r";
-  $output .= "   <input type='submit' value='".__('Delete Coupon', 'wpsc')."' name='edit_coupon[".$id."][delete_coupon]' />\n\r";
-*/
-
   $output .= "  </td>\n\r";
   $output .= " </tr>\n\r";
 
@@ -475,40 +426,6 @@ $conditions = unserialize($coupon['condition']);
   	$output .=	wpsc_coupons_conditions( $id);
 
   }
-  ?>
-<!--
-  <tr><td colspan="8">
-	<div class="coupon_condition">
-		<div><img height="16" width="16" class="delete" alt="Delete" src="<?=WPSC_URL?>/images/cross.png"/></button>
-			<select class="ruleprops" name="rules[property][]">
-				<option value="item_name" rel="order">Item name</option>
-				<option value="item_quantity" rel="order">Item quantity</option>
-				<option value="total_quantity" rel="order">Total quantity</option>
-				<option value="subtotal_amount" rel="order">Subtotal amount</option>
-			</select>
-			<select name="rules[logic][]">
-				<option value="equal">Is equal to</option>
-				<option value="greater">Is greater than</option>
-				<option value="less">Is less than</option>
-				<option value="contains">Contains</option>
-				<option value="not_contain">Does not contain</option>
-				<option value="begins">Begins with</option>
-				<option value="ends">Ends with</option>
-			</select>
-			<span>
-				<input type="text" name="rules[value][]"/>
-			</span>
-			<span>
-				<button class="add" type="button">
-					<img height="16" width="16" alt="Add" src="<?php //WPSC_URL?>/images/add.png"/>
-				</button>
-			</span>
-		</div>
-	</div>
-</tr>
--->
-
-  <?php
   $output .= "</table>\n\r";
   $output .= "</form>\n\r";
   echo $output;
@@ -726,7 +643,7 @@ function wpsc_packing_slip($purchase_id) {
 	
 		if($cart_log != null) {
       echo "<div class='packing_slip'>\n\r";
-			echo "<h2>".__('Packing Slip', 'wpsc')."</h2>\n\r";
+			echo apply_filters( 'wpsc_packing_slip_header', '<h2>' . __( 'Packing Slip', 'wpsc' ) . "</h2>\n\r" );
 			echo "<strong>".__('Order', 'wpsc')." #</strong> ".$purchase_id."<br /><br />\n\r";
 			
 			echo "<table>\n\r";
@@ -736,7 +653,7 @@ function wpsc_packing_slip($purchase_id) {
 			$input_data = $wpdb->get_results($form_sql,ARRAY_A);
 	
 */		
-			echo "<tr><td colspan='2'><strong>Billing Info</strong></td></tr>";
+			echo "<tr class='heading'><td colspan='2'><strong>Billing Info</strong></td></tr>";
 			foreach((array)$purchlogitem->userinfo as $userinfo){
 				if($userinfo['unique_name'] != 'billingcountry'){
 					echo "<tr><td>".$userinfo['name'].": </td><td>".$userinfo['value']."</td></tr>";
@@ -757,7 +674,7 @@ function wpsc_packing_slip($purchase_id) {
 				}
 			}
 			
-			echo "<tr><td colspan='2'><strong>Shipping Info</strong></td></tr>";
+			echo "<tr class='heading'><td colspan='2'><strong>Shipping Info</strong></td></tr>";
 			foreach((array)$purchlogitem->shippinginfo as $userinfo){
 				if($userinfo['unique_name'] != 'shippingcountry' && $userinfo['unique_name'] != 'shippingstate'){
 					echo "<tr><td>".$userinfo['name'].": </td><td>".$userinfo['value']."</td></tr>";
@@ -777,7 +694,7 @@ function wpsc_packing_slip($purchase_id) {
 					}
 				}elseif($userinfo['unique_name'] == 'shippingstate'){
 					if(!empty($userinfo['value']) && !is_numeric($userinfo['value'])){
-						echo "<tr><td>".$userinfo['name'].": </td><td>".$userinfo['value']."</td</tr>>";
+						echo "<tr><td>".$userinfo['name'].": </td><td>".$userinfo['value']."</td></tr>";
 					}elseif(is_numeric($userinfo['value'])){
 							echo "<tr><td>State: </td><td>".wpsc_get_state_by_id($userinfo['value'],'name')."</td></tr>";
 					}

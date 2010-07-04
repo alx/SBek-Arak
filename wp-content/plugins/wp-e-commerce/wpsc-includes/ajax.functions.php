@@ -783,6 +783,7 @@ if($_REQUEST['wpsc_action'] == 'gateway_notification') {
 if(isset($_GET['termsandconds']) && $_GET['termsandconds'] === 'true'){
 	echo stripslashes(get_option('terms_and_conditions'));
 	exit();
+
 }
 
 
@@ -802,7 +803,7 @@ function wpsc_change_tax() {
 	$wpsc_delivery_region = $wpsc_cart->delivery_region;
   
 
-  $previous_country = $_SESSION['wpsc_selected_country'];
+	$previous_country = $_SESSION['wpsc_selected_country'];
 	if(isset($_POST['billing_country'])){
 		$wpsc_selected_country = $wpdb->escape($_POST['billing_country']);
 		$_SESSION['wpsc_selected_country'] = $wpsc_selected_country;
@@ -813,6 +814,12 @@ function wpsc_change_tax() {
 		$_SESSION['wpsc_selected_region'] = $wpsc_selected_region;
 	}
 
+	//if(!wpsc_has_shipping_form()) {
+	//	$_POST['shipping_country'] = $wpsc_selected_country;
+	//	$_POST['shipping_region'] = $wpsc_selected_region;
+	//}
+	
+	
 	$check_country_code = $wpdb->get_var(" SELECT `country`.`isocode` FROM `".WPSC_TABLE_REGION_TAX."` AS `region` INNER JOIN `".WPSC_TABLE_CURRENCY_LIST."` AS `country` ON `region`.`country_id` = `country`.`id` WHERE `region`.`id` = '".$_SESSION['wpsc_selected_region']."' LIMIT 1");
 	
 	if($_SESSION['wpsc_selected_country'] != $check_country_code) {
@@ -835,7 +842,7 @@ function wpsc_change_tax() {
 	}
 
 	
-  $wpsc_cart->update_location();
+	$wpsc_cart->update_location();
 	$wpsc_cart->get_shipping_method();
 	$wpsc_cart->get_shipping_option();
 	if($wpsc_cart->selected_shipping_method != '') {
@@ -980,7 +987,6 @@ function nzshpcrt_download_file() {
 				exit(_e('This download is no longer valid, Please contact the site administrator for more information.','wpsc'));
 		  }
 		}
-   
     if($download_data != null) {
 			if($download_data['fileid'] > 0) {
 				$file_data = $wpdb->get_row("SELECT * FROM `".WPSC_TABLE_PRODUCT_FILES."` WHERE `id`='".$download_data['fileid']."' LIMIT 1", ARRAY_A);

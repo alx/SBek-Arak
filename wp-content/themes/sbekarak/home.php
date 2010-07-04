@@ -48,7 +48,7 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
     <div id="home_nav">
         <ul id="home_navlist">
             <li><a href="/catalog_en">English</a></li>
-            <li><a href="/catalog_fr">Fran&ccedil;ais</a></li>
+            <li><a href="/catalog">Fran&ccedil;ais</a></li>
             <li><a href="/catalog_it">Italien</a></li>
             <li><a href="/catalog_jp">Japanese</a></li>
         </ul>

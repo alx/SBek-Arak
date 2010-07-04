@@ -9,12 +9,21 @@ get_header(); ?>
 	<div id="contentleft">
 	    
 	    <div class='wpsc_categories wpsc_category_grid'>
-			<?php wpsc_start_category_query(array('parent_category_id' => 9, 'show_thumbnails'=> 1, 'image_size' => array('width'=>170, 'height' => 170))); ?>
-				<a href="<?php wpsc_print_category_url();?>" class="wpsc_category_grid_item" title='<?php wpsc_print_category_name();?>'>
-					<?php wpsc_print_category_image(170, 170); ?>
-				</a>
-				
-			<?php wpsc_end_category_query(); ?>
+			<a href="/products-page/mini/Fluo/" class="wpsc_category_grid_item" title="Fluo">
+                <img src="/wp-content/uploads/wpsc/category_images/mini_fluo.jpg" alt="Fluo" title="Fluo" class="wpsc_category_image">
+            </a>
+
+            <a href="/products-page/mini/Devil/" class="wpsc_category_grid_item" title="Devil">
+                <img src="/wp-content/uploads/wpsc/category_images/mini.jpg" alt="Devil" title="Devil" class="wpsc_category_image">
+            </a>
+
+            <a href="/products-page/mini/Porte%20Carte/" class="wpsc_category_grid_item" title="Porte Carte">
+                <img src="/wp-content/uploads/wpsc/category_images/bluantique.jpg" alt="Porte Carte" title="Porte Carte" class="wpsc_category_image">
+            </a>
+
+            <a href="/products-page/mini/Trousse_Zip/" class="wpsc_category_grid_item" title="Trousse Zip">
+                <img src="/wp-content/uploads/wpsc/category_images/wax_brown_zip_800.jpg" alt="Trousse Zip" title="Trousse Zip" class="wpsc_category_image">
+            </a>
 			<div class='clear_category_group'></div>
 		</div>
 		
@@ -31,7 +40,7 @@ get_header(); ?>
 <div id="footer">
 
     <div class="footer">
-		<a href="/catalog_fr">Catalog</a>
+		<a href="/catalog">Catalog</a>
     </div>
     
 </div>

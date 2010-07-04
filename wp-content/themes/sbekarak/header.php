@@ -45,7 +45,7 @@ foreach ($options as $value) {
     <h1><a href="<?php echo get_settings('home'); ?>/"><img src="<?php bloginfo('template_url'); ?>/images/title.png" alt="sbekarak"></a></h1>
 	
 	<ul id="nav">
-		<li><a href="/catalog_fr">Acceuil</a></li>
+		<li><a href="/catalog">Acceuil</a></li>
 		<li><a href="/profil/" title="Profil">Profil</a></li>
 		<li><a href="/presse/" title="Presse">Presse</a></li>
 		<li><a href="/contact/" title="Contact">Contact</a></li>

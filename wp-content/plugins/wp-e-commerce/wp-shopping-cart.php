@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name:WP Shopping Cart
+Plugin Name: WP e-Commerce Plugin
 Plugin URI: http://www.getshopped.org
 Description: A plugin that provides a WordPress Shopping Cart. Visit the <a href='http://getshopped.org/forums'>getshopped forums</a> for support.
-Version: 3.7.6.4
+Version: 3.7.6.5
 Author: Instinct
 Author URI: http://www.getshopped.org
 */
@@ -13,10 +13,11 @@ Author URI: http://www.getshopped.org
 */
 // this is to make sure it sets up the table name constants correctly on activation
 global $wpdb;
+@ini_set( 'memory_limit', '64M' );
 define('WPSC_VERSION', '3.7');
-define('WPSC_MINOR_VERSION', '54');
+define('WPSC_MINOR_VERSION', '55');
 
-define('WPSC_PRESENTABLE_VERSION', '3.7.6.4');
+define('WPSC_PRESENTABLE_VERSION', '3.7.6.5');
 
 define('WPSC_DEBUG', false);
 define('WPSC_GATEWAY_DEBUG', false);
@@ -127,6 +128,12 @@ require_once(WPSC_FILE_PATH."/wpsc-includes/form-display.functions.php");
 require_once(WPSC_FILE_PATH."/wpsc-includes/merchant.class.php");
 require_once(WPSC_FILE_PATH."/wpsc-includes/meta.functions.php");
 require_once(WPSC_FILE_PATH."/wpsc-includes/productfeed.php");
+
+require_once(WPSC_FILE_PATH.'/wpsc-includes/theme.functions.php');
+
+//Add deprecated functions in this file please
+require_once(WPSC_FILE_PATH."/wpsc-includes/deprecated.functions.php");
+
 
 //exit(print_r($v1,true));
 if($v1[0] >= 2.8){
@@ -262,10 +269,6 @@ define('WPSC_CACHE_URL', $wpsc_cache_url);
 define('WPSC_UPGRADES_URL', $wpsc_upgrades_url);
 
 define('WPSC_THEMES_URL', $wpsc_themes_url);
-require_once(WPSC_FILE_PATH.'/wpsc-includes/theme.functions.php');
-
-//Add deprecated functions in this file please
-require_once(WPSC_FILE_PATH."/wpsc-includes/deprecated.functions.php");
 
 /* 
  * This plugin gets the merchants from the merchants directory and
@@ -273,15 +276,17 @@ require_once(WPSC_FILE_PATH."/wpsc-includes/deprecated.functions.php");
  */
 $gateway_directory = WPSC_FILE_PATH.'/merchants';
 $nzshpcrt_merchant_list = wpsc_list_dir($gateway_directory);
- //exit("<pre>".print_r($nzshpcrt_merchant_list,true)."</pre>");
+
 $num=0;
-foreach($nzshpcrt_merchant_list as $nzshpcrt_merchant) {
+foreach((array)$nzshpcrt_merchant_list as $nzshpcrt_merchant) {
   if(stristr( $nzshpcrt_merchant , '.php' )) {
     //echo $nzshpcrt_merchant;
     require(WPSC_FILE_PATH."/merchants/".$nzshpcrt_merchant);
 	}
   $num++;
 }
+
+$nzshpcrt_gateways = apply_filters('wpsc_gateway_modules',$nzshpcrt_gateways);
 /* 
  * and ends here
  */
@@ -289,7 +294,7 @@ foreach($nzshpcrt_merchant_list as $nzshpcrt_merchant) {
 // include shipping modules here.
 $shipping_directory = WPSC_FILE_PATH.'/shipping';
 $nzshpcrt_shipping_list = wpsc_list_dir($shipping_directory);
-foreach($nzshpcrt_shipping_list as $nzshpcrt_shipping) {
+foreach((array)$nzshpcrt_shipping_list as $nzshpcrt_shipping) {
 	if(stristr( $nzshpcrt_shipping , '.php' )) {
 		if($nzshpcrt_shipping == 'ups.php'){
 			if (phpMinV('5')){
@@ -319,7 +324,6 @@ $wpsc_gateways = array();
 foreach((array)$nzshpcrt_gateways as $key => $gateway) {
 	$wpsc_gateways[$gateway['internalname']] = &$nzshpcrt_gateways[$key];
 }
-
 
 $theme_path = WPSC_FILE_PATH . '/themes/';
 if((get_option('wpsc_selected_theme') != '') && (file_exists($theme_path.get_option('wpsc_selected_theme')."/".get_option('wpsc_selected_theme').".php") )) {    
@@ -531,7 +535,6 @@ function wpsc_update_notice() {
 if ( is_admin() ) {
 	add_action( 'in_plugin_update_message-' . plugin_basename( __FILE__ ), 'wpsc_update_notice' );
 }
-
 
 
 ?>

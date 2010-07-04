@@ -23,6 +23,7 @@ body {
 #wrap {
 	background: ##ECE9DB;
 	width: 780px;
+  min-height:390px;
 	margin: 0px auto 0px;
 	padding: 0px;
 	-moz-border-radius-topleft: 5px;

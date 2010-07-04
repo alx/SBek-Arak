@@ -7,13 +7,13 @@ $wpsc_coupons = new wpsc_coupons($_SESSION['coupon_numbers']);
 // echo "<pre>".print_r($wpsc_cart,true)."</pre>";
 if(wpsc_cart_item_count() > 0) :
 ?>
-<p><?php echo TXT_WPSC_REVIEW_YOUR_ORDER; ?></p>
+<p>V&eacute;rifiez votre panier:</p>
 <table class="productcart">
 	<tr class="firstrow">
 		<td class='firstcol'></td>
-		<td><?php echo TXT_WPSC_PRODUCT; ?>:</td>
-		<td><?php echo TXT_WPSC_QUANTITY; ?>:</td>
-		<td><?php echo TXT_WPSC_PRICE; ?>:</td>
+		<td>Produit:</td>
+		<td>Quantit&eacute;:</td>
+		<td>Prix:</td>
 		<td></td>
 	</tr>
 	<?php while (wpsc_have_cart_items()) : wpsc_the_cart_item(); ?>
@@ -30,7 +30,7 @@ if(wpsc_cart_item_count() > 0) :
 					<input type="text" name="quantity" size="2" value="<?php echo wpsc_cart_item_quantity(); ?>" />
 					<input type="hidden" name="key" value="<?php echo wpsc_the_cart_item_key(); ?>" />
 					<input type="hidden" name="wpsc_update_quantity" value="true" />
-					<input type="submit" value="<?php echo TXT_WPSC_APPLY; ?>" name="submit" />
+					<input type="submit" value="Mettre a jour" name="submit" />
 				</form>
 			</td>
 			<td><span class="pricedisplay"><?php echo wpsc_cart_item_price(); ?></span></td>
@@ -39,7 +39,7 @@ if(wpsc_cart_item_count() > 0) :
 					<input type="hidden" name="quantity" value="0" />
 					<input type="hidden" name="key" value="<?php echo wpsc_the_cart_item_key(); ?>" />
 					<input type="hidden" name="wpsc_update_quantity" value="true" />
-					<button class='remove_button' type="submit"><span><?php echo TXT_WPSC_REMOVE; ?></span></button>
+					<button class='remove_button' type="submit"><span>Effacer</span></button>
 				</form>
 			</td>
 		</tr>
@@ -48,14 +48,14 @@ if(wpsc_cart_item_count() > 0) :
 	<?php if(wpsc_uses_coupons()): ?>
 		
 		<?php if(wpsc_coupons_error()): ?>
-			<tr><td><?php echo TXT_WPSC_COUPONSINVALID; ?></td></tr>
+			<tr><td>Coupon non valide</td></tr>
 		<?php endif; ?>
 		<tr>
 			<td colspan="2"><?php _e('Enter your coupon number'); ?> :</td>
 			<td  colspan="3" align='left'>
 				<form  method='post' action="<?php echo get_option('shopping_cart_url'); ?>">
 					<input type='text' name='coupon_num' id='coupon_num' value='<?php echo $wpsc_cart->coupons_name; ?>' />
-					<input type='submit' value='<?php echo TXT_WPSC_APPLY ?>' />
+					<input type='submit' value='Ajouter' />
 				</form>
 			</td>
 		</tr>
@@ -80,11 +80,11 @@ if(wpsc_cart_item_count() > 0) :
 	<?php do_action('wpsc_before_shipping_of_shopping_cart'); ?>
 	<div id='wpsc_shopping_cart_container'>
 	<?php if(wpsc_uses_shipping()) : ?>
-		<h2><?php echo TXT_WPSC_SHIPPING_COUNTRY; ?></h2>
+		<h2>Pays d'expédition</h2>
 		<table class="productcart">
 			<tr>
 				<td colspan='5'>
-					<?php echo TXT_WPSC_SHIPPING_DETAIL; ?>
+					Détails pour l'expédition
 				</td>
 			</tr>
 
@@ -118,7 +118,7 @@ if(wpsc_cart_item_count() > 0) :
 			<?php if (wpsc_have_morethanone_shipping_quote()) :?>
 				<?php while (wpsc_have_shipping_methods()) : wpsc_the_shipping_method(); ?>
 						<?php 	if (!wpsc_have_shipping_quotes()) { continue; } // Don't display shipping method if it doesn't have at least one quote ?>
-						<tr><td class='shipping_header' colspan='5'><?php echo wpsc_shipping_method_name().TXT_WPSC_CHOOSE_A_SHIPPING_RATE; ?> </td></tr>
+						<tr><td class='shipping_header' colspan='5'>Choisir un mode d'envoi: </td></tr>
 						<?php while (wpsc_have_shipping_quotes()) : wpsc_the_shipping_quote();	?>
 							<tr>
 								<td colspan='3'>
@@ -155,7 +155,7 @@ if(wpsc_cart_item_count() > 0) :
    <?php if(wpsc_uses_shipping()) : ?>
 	<tr class="total_price total_shipping">
 		<td colspan="3">
-			<?php echo TXT_WPSC_TOTALSHIPPING; ?>
+			Transport
 		</td>
 		<td colspan="2">
 			<span id="checkout_shipping" class="pricedisplay checkout-shipping"><?php echo wpsc_cart_shipping(); ?></span>
@@ -166,7 +166,7 @@ if(wpsc_cart_item_count() > 0) :
 	  <?php if(wpsc_uses_coupons() && (wpsc_coupon_amount(false) > 0)): ?>
 	<tr class="total_price">
 		<td colspan="3">
-			<?php echo TXT_WPSC_COUPONS; ?>
+			Réductions
 		</td>
 		<td colspan="2">
 			<span id="coupons_amount" class="pricedisplay"><?php echo wpsc_coupon_amount(); ?></span>
@@ -178,7 +178,7 @@ if(wpsc_cart_item_count() > 0) :
 	
 	<tr class='total_price'>
 		<td colspan='3'>
-		<?php echo TXT_WPSC_TOTALPRICE; ?>
+		Prix Total
 		</td>
 		<td colspan='2'>
 			<span id='checkout_total' class="pricedisplay checkout-total"><?php echo wpsc_cart_total(); ?></span>
@@ -219,10 +219,7 @@ if(wpsc_cart_item_count() > 0) :
 			<label><?php _e('E-mail'); ?>:</label><input type="text" name="user_email" id="user_email" value="<?php echo attribute_escape(stripslashes($user_email)); ?>" size="20" />
 		</fieldset>
 	<?php endif; ?>
-
-	<h2><?php echo TXT_WPSC_CONTACTDETAILS; ?></h2>
-	<?php/* echo TXT_WPSC_CREDITCARDHANDY; <br /> */?>
-	<?php echo TXT_WPSC_ASTERISK; ?>
+	
 	<?php
 	  if(count($_SESSION['wpsc_checkout_misc_error_messages']) > 0) {
 			echo "<div class='login_error'>\n\r";
@@ -277,27 +274,14 @@ if(wpsc_cart_item_count() > 0) :
 			<?php endif; ?>
 		
 		<?php endwhile; ?>
-		
-		<?php if (get_option('display_find_us') == '1') : ?>
-		<tr>
-			<td>How did you find us:</td>
-			<td>
-				<select name='how_find_us'>
-					<option value='Word of Mouth'>Word of mouth</option>
-					<option value='Advertisement'>Advertising</option>
-					<option value='Internet'>Internet</option>
-					<option value='Customer'>Existing Customer</option>
-				</select>
-			</td>
-		</tr>
-		<?php endif; ?>		
+	
 		<tr>
 			<td colspan='2'>
 			
 			<?php  //this HTML displays activated payment gateways?>
 			  
 				<?php if(wpsc_gateway_count() > 1): // if we have more than one gateway enabled, offer the user a choice ?>
-					<h3><?php echo TXT_WPSC_SELECTGATEWAY;?></h3>
+					<h3>Choisir une moyen de paiement:</h3>
 					<?php while (wpsc_have_gateways()) : wpsc_the_gateway(); ?>
 						<div class="custom_gateway">
 							<?php if(wpsc_gateway_internal_name() == 'noca'){ ?>
@@ -331,8 +315,8 @@ if(wpsc_cart_item_count() > 0) :
 		<?php if(get_option('terms_and_conditions') != '') : ?>
 		<tr>
 			<td colspan='2'>
-     			 <input type='checkbox' value='yes' name='agree' /> <?php echo TXT_WPSC_TERMS1;?><a class='thickbox' target='_blank' href='<?php
-      echo get_option('siteurl')."?termsandconds=true&amp;width=360&amp;height=400'"; ?>' class='termsandconds'><?php echo TXT_WPSC_TERMS2;?></a>
+     			 <input type='checkbox' value='yes' name='agree' /> J'accepte les <a class='thickbox' target='_blank' href='<?php
+      echo get_option('siteurl')."?termsandconds=true&amp;width=360&amp;height=400'"; ?>' class='termsandconds'>Conditions de vente</a>
    		   </td>
  	   </tr>
 		<?php endif; ?>	
@@ -344,7 +328,7 @@ if(wpsc_cart_item_count() > 0) :
 				<?php //exit('<pre>'.print_r($wpsc_gateway->wpsc_gateways[0]['name'], true).'</pre>');
 				 if(count($wpsc_gateway->wpsc_gateways) == 1 && $wpsc_gateway->wpsc_gateways[0]['name'] == 'Noca'){}else{?>
 					<input type='hidden' value='submit_checkout' name='wpsc_action' />
-					<input type='submit' value='<?php echo TXT_WPSC_MAKEPURCHASE;?>' name='submit' class='make_purchase' />
+					<input type='submit' value='Commander avec Paypal' name='submit' class='make_purchase' />
 				<?php }/* else: ?>
 				
 				<br /><strong><?php echo TXT_WPSC_PLEASE_LOGIN;?></strong><br />
@@ -359,7 +343,7 @@ if(wpsc_cart_item_count() > 0) :
 <?php
 else:
 ?>
-    <p>Nothing in your cart, you can <a href="/catalog_fr">return shopping</a></p>
+    <p>Il n'y a rien dans votre panier, vous pouvez retourner <a href="/catalog">consulter le catalogue</a>.</p>
 <?php
 endif;
 do_action('wpsc_bottom_of_shopping_cart');

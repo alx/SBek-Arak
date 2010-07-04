@@ -183,10 +183,13 @@ class wpsc_merchant_paypal_standard extends wpsc_merchant {
 					++$i;
 				}
 			}
-			
-		// Payment Type settings to be sent to paypal
-
 		
+		//set base shipping
+		$paypal_vars += array(
+			"handling_cart" => $this->cart_data['base_shipping']
+		);		
+		
+		// Payment Type settings to be sent to paypal
 		if($this->cart_data['is_subscription'] == true) {
 			$paypal_vars += array(
 				'cmd'=> '_xclick-subscriptions'
@@ -216,12 +219,12 @@ class wpsc_merchant_paypal_standard extends wpsc_merchant {
 		$gateway_values =  implode('&', $name_value_pairs);
 
 		
-		//if(defined('WPSC_ADD_DEBUG_PAGE') and (WPSC_ADD_DEBUG_PAGE == true) ) {
+		if(defined('WPSC_ADD_DEBUG_PAGE') and (WPSC_ADD_DEBUG_PAGE == true) ) {
 			echo "<a href='".get_option('paypal_multiple_url')."?".$gateway_values."'>Test the URL here</a>";
 			//echo "<pre>".print_r($this->cart_items,true)."</pre>";
 			echo "<pre>".print_r($this->collected_gateway_data,true)."</pre>";
 			exit();
-		//}
+		}
 		//exit('<pre>'.print_r($gateway_values, true).'</pre>');
 		header("Location: ".get_option('paypal_multiple_url')."?".$gateway_values);
 		exit();
@@ -306,7 +309,6 @@ class wpsc_merchant_paypal_standard extends wpsc_merchant {
 		".print_r($this->cart_items, true)."
 		{$altered_count}
 		";
-		//mail('thomas.howard@gmail.com', "IPN Debugging", $message);
 	}
 
 
